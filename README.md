@@ -18,3 +18,7 @@ Content of 'init.lua':
 ```lua
 require('setup')
 ```
+
+## Extension
+
+[[--TODO]]
