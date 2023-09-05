@@ -23,4 +23,7 @@ require("lazy").setup({
   'hrsh7th/cmp-cmdline', 
   'hrsh7th/nvim-cmp',
 
+  -- snippets
+  'hrsh7th/vim-vsnip'
+
 })
