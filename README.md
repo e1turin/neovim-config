@@ -7,7 +7,7 @@ The configuration can be used through importing `setup` module from the root of 
 Steps to do so:
 1. clone repository.
 2. rename directory to 'lua'.
-3. to import the `setup` module from 'init.lua' (must lay near to the cloned directory).
+3. import the `setup` module from 'init.lua' (must lay near to the lua directory).
 
 Steps 1-2:
 ```bash
