@@ -24,6 +24,10 @@ require("lazy").setup({
   'hrsh7th/nvim-cmp',
 
   -- snippets
-  'hrsh7th/vim-vsnip'
+  'hrsh7th/vim-vsnip',
+
+  -- pachage manager
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
 
 })
