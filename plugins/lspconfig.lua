@@ -1,7 +1,9 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 
+-- Activate specific Language Servers
 lspconfig.pyright.setup {}
+lspconfig.marksman.setup {}
 lspconfig.lua_ls.setup {
   settings = {
     Lua = {
