@@ -19,6 +19,8 @@ Content of 'init.lua':
 require('setup')
 ```
 
-## Extension
+## Extensions
+
 
 [[--TODO]]
+- move plugin includings to the separate modules with explicit `config` declatarion (see Lazy)
