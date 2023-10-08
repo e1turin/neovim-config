@@ -6,6 +6,4 @@ require('core.theme')
 
 -- Plugin settings
 require('plugins.mason') -- IMPORTANT: After setting up mason-lspconfig you may set up servers via lspconfig
-require('plugins.neodev') -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require('plugins.cmp')
-require('plugins.lspconfig')
+require('plugins.cmp') -- TODO: move imports to package manager

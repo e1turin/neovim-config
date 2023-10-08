@@ -14,11 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Include plugins (additional setup is required for each of them)
 require("lazy").setup {
-  -- Standart LSP setup helper
-  "neovim/nvim-lspconfig",
-
-  -- Neovim config helper
-  "folke/neodev.nvim",
 
   -- Completion
   'hrsh7th/cmp-nvim-lsp',
@@ -27,17 +22,31 @@ require("lazy").setup {
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
 
+  -- Snippets
+  { 'hrsh7th/vim-vsnip', }, -- Is needed for cmp
+
+  -- Standart LSP setup helper
+  require("plugins.lspconfig"),
+
   -- File search
   require("plugins.telescope"),
 
   -- File tree
   require("plugins.nvim-tree"),
 
-  -- Snippets
-  'hrsh7th/vim-vsnip',
+  -- Statusline
+  require("plugins.lualine"),
 
   -- Package manager for LSP, DAP, Linters...
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
+
+  -- Neovim config helper
+  { 
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup {}
+    end
+  },
 
 }
