@@ -26,7 +26,7 @@ require("lazy").setup {
   { 'hrsh7th/vim-vsnip', }, -- Is needed for cmp
 
   -- Standart LSP setup helper
-  require("plugins.lspconfig"),
+  "neovim/nvim-lspconfig",
 
   -- File search
   require("plugins.telescope"),
