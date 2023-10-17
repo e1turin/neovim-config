@@ -24,3 +24,9 @@ require('setup')
 
 [[--TODO]]
 - move plugin includings to the separate modules with explicit `config` declatarion (see Lazy)
+
+## .ideavimrc
+
+config for using with IdeaVim plugin for IntelliJ.
+
+- copy it to `~/.ideavimrc`

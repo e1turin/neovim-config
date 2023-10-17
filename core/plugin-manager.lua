@@ -36,6 +36,7 @@ require("lazy").setup {
 
   -- Statusline
   require("plugins.lualine"),
+  require("plugins.bufferline"),
 
   -- Package manager for LSP, DAP, Linters...
   "williamboman/mason.nvim",
