@@ -15,18 +15,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Include plugins (additional setup is required for each of them)
 require("lazy").setup {
 
-  -- Completion
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/nvim-cmp',
+  { -- Completion
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp', },
+      { 'hrsh7th/cmp-buffer', },
+      { 'hrsh7th/cmp-path', },
+      { 'hrsh7th/cmp-cmdline', },
 
-  -- Snippets
-  { 'hrsh7th/vim-vsnip', }, -- Is needed for cmp
+      -- Snippets
+      { 'hrsh7th/vim-vsnip', }, -- Is needed for cmp
+    }
+  },
 
-  -- Standart LSP setup helper
-  "neovim/nvim-lspconfig",
+  { -- Standart LSP setup helper
+    "neovim/nvim-lspconfig",
+  },
 
   -- File search
   require("plugins.telescope"),
@@ -38,16 +42,58 @@ require("lazy").setup {
   require("plugins.lualine"),
   require("plugins.bufferline"),
 
-  -- Package manager for LSP, DAP, Linters...
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+  { -- Package manager for LSP, DAP, Linters...
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    }
+  },
 
-  -- Neovim config helper
-  { 
+  { -- Neovim config helper
     "folke/neodev.nvim",
     config = function()
       require("neodev").setup {}
     end
   },
 
+  { -- Indentation Highlighting
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("ibl").setup {}
+    end
+  },
+  { -- Git Integration
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup {
+        signs = {
+          add          = { text = '|' },
+          change       = { text = '|' },
+          delete       = { text = '_' },
+          topdelete    = { text = '‾' },
+          changedelete = { text = '~' },
+          untracked    = { text = ':' },
+        },
+      }
+      -- overrides by color scheme
+    end,
+  },
+  {
+    'brenoprata10/nvim-highlight-colors'
+  },
+  { -- Pair brackets
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  },
+
+  -- Color schemes
+  {"rebelot/kanagawa.nvim"},
+  {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000
+  },
 }

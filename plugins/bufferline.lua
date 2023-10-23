@@ -13,15 +13,15 @@ return {
           local icon = level:match("error") and " " or ""
           return " " .. icon .. count
         end,
-        close_command = "bdelete! %d",        -- can be a string | function, | false see "Mouse actions"
-        right_mouse_command = nil,             --"bdelete! %d", -- can be a string | function | false, see "Mouse actions"
-        left_mouse_command = nil,              --"buffer %d",    -- can be a string | function, | false see "Mouse actions"
-        middle_mouse_command = "buffer %d",   -- nil,          -- can be a string | function, | false see "Mouse actions"
+        close_command = "bdelete %d",           -- can be a string | function, | false see "Mouse actions"
+        right_mouse_command = false,            --"bdelete! %d", -- can be a string | function | false, see "Mouse actions"
+        left_mouse_command = 'buffer %d',       -- can be a string | function, | false see "Mouse actions"
+        middle_mouse_command = "bdelete %d",    -- can be a string | function, | false see "Mouse actions"
 
         -- For 2.)8.) - change the order of arguments to change the order in the string
         numbers = function(opts)
           --return string.format('%s.)%s.)', opts.ordinal, opts.id)
-          return string.format('[%s]', opts.id)
+          return string.format('<%s>', opts.id)
         end,
         offsets = {
           {

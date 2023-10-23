@@ -8,3 +8,6 @@ require('core.theme')
 require('plugins.mason') -- IMPORTANT: After setting up mason-lspconfig you may set up servers via lspconfig
 require('plugins.cmp') -- TODO: move imports to package manager
 require("plugins.lspconfig")
+
+-- startup configuration
+require('core.on-startup')
