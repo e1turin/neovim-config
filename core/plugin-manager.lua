@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
+
 -- Include plugins (additional setup is required for each of them)
 require("lazy").setup {
 
@@ -30,6 +31,14 @@ require("lazy").setup {
 
   { -- Standart LSP setup helper
     "neovim/nvim-lspconfig",
+  },
+
+  { -- Comments
+    'numToStr/Comment.nvim',
+    lazy = false,
+    config = function ()
+      require('Comment').setup()
+    end
   },
 
   -- File search
@@ -62,13 +71,14 @@ require("lazy").setup {
       require("ibl").setup {}
     end
   },
+
   { -- Git Integration
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup {
-        signs = {
-          add          = { text = '|' },
-          change       = { text = '|' },
+        signs = { --[[e.g. ▏, ▎, ╍, ┃, │, █, ·, …, ⋯ ]]
+          add          = { text = '·' },
+          change       = { text = '·' },
           delete       = { text = '_' },
           topdelete    = { text = '‾' },
           changedelete = { text = '~' },
@@ -78,9 +88,11 @@ require("lazy").setup {
       -- overrides by color scheme
     end,
   },
-  {
+
+  { -- Highlight code for colorings
     'brenoprata10/nvim-highlight-colors'
   },
+
   { -- Pair brackets
     "windwp/nvim-autopairs",
     config = function()
@@ -88,8 +100,14 @@ require("lazy").setup {
     end
   },
 
+  { -- Auto save
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup {}
+    end,
+  },
+
   -- Color schemes
-  {"rebelot/kanagawa.nvim"},
   {
     "bluz71/vim-moonfly-colors",
     name = "moonfly",
@@ -97,3 +115,4 @@ require("lazy").setup {
     priority = 1000
   },
 }
+

@@ -9,8 +9,9 @@ lspconfig.marksman.setup {}
 lspconfig.lua_ls.setup {
   settings = {
     Lua = {
-      completion = {
-        --callSnippet = "Replace"
+      completion = {  },
+      workspace = {
+        checkThirdParty = false,
       }
     }
 
