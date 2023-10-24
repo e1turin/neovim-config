@@ -107,6 +107,13 @@ require("lazy").setup {
     end,
   },
 
+  { -- Treesitter
+    'nvim-treesitter/nvim-treesitter',
+    config = function ()
+      vim.cmd([[:TSUpdate]])
+    end
+  },
+
   -- Color schemes
   {
     "bluz71/vim-moonfly-colors",

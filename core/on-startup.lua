@@ -1,2 +1,2 @@
 -- always open nvim-tree
-require('nvim-tree.api').tree.open()
+-- require('nvim-tree.api').tree.open()
