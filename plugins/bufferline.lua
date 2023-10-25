@@ -1,10 +1,15 @@
+--[[ Line for visualizing openned buffers as tabs ]]
+
 return {
   'akinsho/bufferline.nvim',
-  version = "*",
+
+  version = '*',
+
   dependencies = 'nvim-tree/nvim-web-devicons',
+
   config = function() -- see :h bufferline-configuration
     vim.opt.termguicolors = true
-    require("bufferline").setup {
+    require('bufferline').setup {
       options = {
         diagnostics = "nvim_lsp",   --false | "nvim_lsp" | "coc",
         diagnostics_update_in_insert = false,

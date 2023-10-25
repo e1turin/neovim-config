@@ -1,3 +1,5 @@
+--[[ Standart Neovim settings ]]
+
 --[[ Unknown options:
   vim.g.did_load_filetypes = 1
   vim.g.formatoptions = "qrn1"

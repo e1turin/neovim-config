@@ -1,3 +1,5 @@
+--[[ Additional keyboard mappings ]]
+
 vim.g.mapleader = ' ' -- space for <leader> key
 
 -- https://github.com/ibhagwan/nvim-lua/blob/82daba2fd86fd388bc61dedb49126fb7cb12ccae/lua/keymaps.lua

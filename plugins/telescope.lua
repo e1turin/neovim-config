@@ -1,9 +1,14 @@
+--[[ Powerful search engine ]]
+
 return {
   'nvim-telescope/telescope.nvim',
+
   tag = '0.1.3',
+
   dependencies = {
     'nvim-lua/plenary.nvim'
   },
+
   config = function()
     local builtin = require('telescope.builtin')
 
@@ -13,6 +18,7 @@ return {
     map('n', '<leader>sg', builtin.live_grep, {})
     map('n', '<leader>sb', builtin.buffers, {})
     map('n', '<leader>sh', builtin.help_tags, {})
+    map('n', '<leader>ff', builtin.current_buffer_fuzzy_find, {})
   end
 }
 

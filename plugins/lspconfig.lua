@@ -1,24 +1,29 @@
--- Setup language servers.
-local lspconfig = require('lspconfig')
+--[[ Standart plugin for setup language servers. ]]
 
--- Activate specific Language Servers
-lspconfig.clangd.setup {}
-lspconfig.pyright.setup {}
-lspconfig.sqlls.setup {}
-lspconfig.marksman.setup {}
-lspconfig.lua_ls.setup {
-  settings = {
-    Lua = {
-      completion = {  },
-      workspace = {
-        checkThirdParty = false,
+local plugin = { -- returns at the end of file
+  'neovim/nvim-lspconfig',
+
+  config = function()
+    local lspconfig = require('lspconfig')
+
+    -- Activate specific Language Servers
+    lspconfig.clangd.setup {}
+    lspconfig.pyright.setup {}
+    lspconfig.sqlls.setup {}
+    lspconfig.marksman.setup {}
+    lspconfig.lua_ls.setup {
+      settings = {
+        Lua = {
+          completion = {},
+          workspace = {
+            checkThirdParty = false,
+          }
+        }
+
       }
     }
-
-  }
-}
-
-
+  end
+},
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -57,3 +62,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+return plugin
+

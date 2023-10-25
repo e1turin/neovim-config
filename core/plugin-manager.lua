@@ -1,3 +1,5 @@
+--[[ Lazy plugin manager setup ]]
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -14,112 +16,55 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Include plugins (additional setup is required for each of them)
-require("lazy").setup {
+require('lazy').setup {
 
-  { -- Completion
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp', },
-      { 'hrsh7th/cmp-buffer', },
-      { 'hrsh7th/cmp-path', },
-      { 'hrsh7th/cmp-cmdline', },
+  --[[ Autocompletion ]]
+  -- Completion
+  require('plugins.cmp'),
+  -- Snippets
+  require('plugins.vim-vsnip'), -- for cmp
 
-      -- Snippets
-      { 'hrsh7th/vim-vsnip', }, -- Is needed for cmp
-    }
-  },
+  --[[ Additional devtools ]]
+  -- Standart LSP setup helper
+  require('plugins.lspconfig'),
+  -- Neovim configuring helper
+  require('plugins.neodev'),
+  -- Package manager for LSP, DAP, Linters, etc.
+  require('plugins.mason'),
 
-  { -- Standart LSP setup helper
-    "neovim/nvim-lspconfig",
-  },
 
-  { -- Comments
-    'numToStr/Comment.nvim',
-    lazy = false,
-    config = function ()
-      require('Comment').setup()
-    end
-  },
-
-  -- File search
-  require("plugins.telescope"),
-
-  -- File tree
-  require("plugins.nvim-tree"),
-
+  --[[ Layout, TUI tools ]]
+  -- Powerful search through Neovim
+  require('plugins.telescope'),
+  -- Directory tree
+  require('plugins.nvim-tree'),
   -- Statusline
-  require("plugins.lualine"),
-  require("plugins.bufferline"),
+  require('plugins.lualine'),
+  -- Tabs for vim's buffers
+  require('plugins.bufferline'),
+  -- Git Integration
+  require('plugins.gitsigns'),
 
-  { -- Package manager for LSP, DAP, Linters...
-    "williamboman/mason.nvim",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    }
-  },
+  --[[ Plugins that eliminate routine ]]
+  -- Comments
+  require('plugins.comment'),
+  -- Pair brackets
+  require('plugins.nvim-autopairs'),
+  -- Manage surrounding symbols
+  require('plugins.nvim-surround'),
+  -- Auto save
+  require('plugins.auto-save'),
 
-  { -- Neovim config helper
-    "folke/neodev.nvim",
-    config = function()
-      require("neodev").setup {}
-    end
-  },
+  --[[ UI improvements ]]
+  -- Indentation Highlighting
+  require('plugins.indent-blankline'),
+  -- Highlight code for colorings
+  require('plugins.nvim-highlight-colors'),
 
-  { -- Indentation Highlighting
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup {}
-    end
-  },
+  -- [[ Treesitter ]]
+  require('plugins.nvim-treesitter'),
 
-  { -- Git Integration
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup {
-        signs = { --[[e.g. ▏, ▎, ╍, ┃, │, █, ·, …, ⋯ ]]
-          add          = { text = '·' },
-          change       = { text = '·' },
-          delete       = { text = '_' },
-          topdelete    = { text = '‾' },
-          changedelete = { text = '~' },
-          untracked    = { text = ':' },
-        },
-      }
-      -- overrides by color scheme
-    end,
-  },
-
-  { -- Highlight code for colorings
-    'brenoprata10/nvim-highlight-colors'
-  },
-
-  { -- Pair brackets
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {}
-    end
-  },
-
-  { -- Auto save
-    "Pocco81/auto-save.nvim",
-    config = function()
-      require("auto-save").setup {}
-    end,
-  },
-
-  { -- Treesitter
-    'nvim-treesitter/nvim-treesitter',
-    config = function ()
-      vim.cmd([[:TSUpdate]])
-    end
-  },
-
-  -- Color schemes
-  {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
-    lazy = false,
-    priority = 1000
-  },
+  --[[ Color schemes ]]
+  require('plugins.themes.moonfly'),
 }
 
