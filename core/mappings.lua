@@ -13,6 +13,7 @@ map('n', ']B', ':blast<CR>', { desc = 'Last buffer' })
 
 map('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
 map('i', '<C-v>', '<C-o>"+p', { desc = 'Paste from system clipboard' })
+map('n', '<C-a>', 'ggVG', { desc = 'Select all content' })
 
 vim.cmd([[let g:ftplugin_sql_omni_key = '<C-\>']])
 
