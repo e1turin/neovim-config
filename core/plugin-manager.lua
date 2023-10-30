@@ -14,7 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-
 -- Include plugins (additional setup is required for each of them)
 require('lazy').setup {
 
@@ -66,5 +65,10 @@ require('lazy').setup {
 
   --[[ Color schemes ]]
   require('plugins.themes.moonfly'),
+  {'zekzekus/menguless'},
+  {'jaredgorski/fogbell.vim'},
+  {'davidosomething/vim-colors-meh'},
+  {'p00f/alabaster.nvim'}
+
 }
 

@@ -29,6 +29,8 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 
+--vim.g.vim_markdown_fenced_languages = {'c', 'python'}
+
 --[[ Search ]]
 vim.opt.ignorecase = true
 vim.opt.incsearch = true

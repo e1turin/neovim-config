@@ -7,5 +7,8 @@ return {
 
   config = function()
     require('Comment').setup()
+
+    local map = vim.keymap.set
+
   end
 }

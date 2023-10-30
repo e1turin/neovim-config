@@ -14,9 +14,24 @@ return {
 
   config = function()
     require('nvim-tree').setup {}
+
+    local function opts(desc)
+      return {
+        desc = 'nvim-tree: ' .. desc,
+        --buffer = bufnr,
+        noremap = true,
+        silent = true,
+        nowait = true
+      }
+    end
+
+    local api = require('nvim-tree.api')
+    local map = vim.keymap.set
+    map('n', '+', api.tree.change_root_to_node, opts('CD'))
+    -- map('n', 'za', api.node.open, opts('Toggle folder'))
   end,
 }
---[[ Default mappings:
+--[[ Default mappings: :h nvim-tree-mappings-default
   '<C-]>',----------->'CD'
   '<C-e>',----------->'Open: In Place'
   '<C-k>',----------->'Info'

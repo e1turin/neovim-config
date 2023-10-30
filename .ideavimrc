@@ -20,13 +20,16 @@ nnoremap [t vato<Esc>
 "map clipboard to common shortcuts
 nnoremap <C-v> "+p
 inoremap <C-v> <Esc>"+pa
+vnoremap <C-v> c"+p
 vnoremap <C-c> "+y
+vnoremap <C-a> <Esc>ggVG
 
 let mapleader = " "
 
+
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Turn on option IdeaVim: Track Action Ids to show actions' names
-"" Map \r to the Reformat Code action "map \r <Action>(ReformatCode)
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
 
 "" Map <leader>d to start debug
 "map <leader>d <Action>(Debug)
@@ -36,3 +39,4 @@ let mapleader = " "
 
 
 " Find more examples here: https://jb.gg/share-ideavimrc
+
