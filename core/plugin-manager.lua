@@ -68,7 +68,7 @@ require('lazy').setup {
   {'zekzekus/menguless'},
   {'jaredgorski/fogbell.vim'},
   {'davidosomething/vim-colors-meh'},
-  {'p00f/alabaster.nvim'}
+  {'p00f/alabaster.nvim'},
 
 }
 

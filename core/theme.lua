@@ -1,6 +1,12 @@
 --[[ Setup Neovim colorscheme ]]
 
---vim.cmd([[colorscheme habamax]]) -- preinstalled theme
+--vim.cmd([[colorscheme habamax]])    -- dark preinstalled theme
+--vim.cmd([[colorscheme desert]])     -- dark preinstalled theme
+--vim.cmd([[colorscheme torte]])      -- dark preinstalled theme
+--vim.cmd([[colorscheme slate]])      -- dark preinstalled theme
+-- vim.cmd([[colorscheme shine]])      -- light preinstalled theme
+--vim.cmd([[colorscheme quiet]])      -- dark/light preinstalled theme depends of prev
+--vim.cmd([[colorscheme peachpuff]])  -- light preinstalled theme
 vim.cmd([[colorscheme alabaster]])
 --vim.cmd([[colorscheme moonfly]])
 --vim.cmd([[colorscheme menguless]])
