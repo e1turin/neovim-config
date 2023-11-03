@@ -64,11 +64,11 @@ require('lazy').setup {
   require('plugins.nvim-treesitter'),
 
   --[[ Color schemes ]]
-  require('plugins.themes.moonfly'),
+  {'bluz71/vim-moonfly-colors'},
   {'zekzekus/menguless'},
-  {'jaredgorski/fogbell.vim'},
   {'davidosomething/vim-colors-meh'},
   {'p00f/alabaster.nvim'},
-
+  {'Biscuit-Colorscheme/nvim'},
+  {'Verf/deepwhite.nvim'},
 }
 

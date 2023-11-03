@@ -33,7 +33,8 @@ return {
              Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files ]]
         -- disable = { "c", "rust" },
         disable = function(lang, buf)
-          -- if lang == 'markdown' then return true end
+          -- Treesitter markdown parser badly highlight links and other but codeblocks
+          if lang == 'markdown' then return true end 
 
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
