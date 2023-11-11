@@ -38,7 +38,7 @@ require('lazy').setup {
   -- Directory tree
   require('plugins.nvim-tree'),
   -- Statusline
-  require('plugins.lualine'),
+  -- require('plugins.lualine'),
   -- Tabs for vim's buffers
   require('plugins.bufferline'),
   -- Git Integration
@@ -56,7 +56,7 @@ require('lazy').setup {
 
   --[[ UI improvements ]]
   -- Indentation Highlighting
-  require('plugins.indent-blankline'),
+  -- require('plugins.indent-blankline'),
   -- Highlight code for colorings
   require('plugins.nvim-highlight-colors'),
 
@@ -66,9 +66,9 @@ require('lazy').setup {
   --[[ Color schemes ]]
   {'bluz71/vim-moonfly-colors'},
   {'zekzekus/menguless'},
-  {'davidosomething/vim-colors-meh'},
-  {'p00f/alabaster.nvim'},
-  {'Biscuit-Colorscheme/nvim'},
-  {'Verf/deepwhite.nvim'},
+  -- {'davidosomething/vim-colors-meh'},
+  -- {'p00f/alabaster.nvim'},
+  -- {'Biscuit-Colorscheme/nvim'},
+  {'Verf/deepwhite.nvim', lazy=false, priority=1000},
 }
 

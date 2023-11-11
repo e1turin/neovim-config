@@ -15,8 +15,8 @@ return {
         diagnostics_update_in_insert = false,
         -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          local icon = level:match("error") and " " or ""
-          return " " .. icon .. count
+          local icon = level:match("error") and "E" or "W"
+          return " " .. count .. icon
         end,
         close_command = "bdelete %d",           -- can be a string | function, | false see "Mouse actions"
         right_mouse_command = false,            --"bdelete! %d", -- can be a string | function | false, see "Mouse actions"
@@ -26,7 +26,7 @@ return {
         -- For 2.)8.) - change the order of arguments to change the order in the string
         numbers = function(opts)
           --return string.format('%s.)%s.)', opts.ordinal, opts.id)
-          return string.format('<%s>', opts.id)
+          return string.format('|%s|', opts.id)
         end,
         offsets = {
           {
@@ -37,7 +37,8 @@ return {
             highlight = "Directory",
             text_align = "left"
           }
-        }
+        },
+        show_buffer_icons = false
       },
       --highlights = {}
     }

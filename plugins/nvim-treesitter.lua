@@ -50,5 +50,9 @@ return {
         additional_vim_regex_highlighting = false,
       },
     }
+
+    -- -- Treesitter folding 
+    -- vim.wo.foldmethod = 'expr'
+    -- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
   end
 }

@@ -13,6 +13,8 @@ return {
 
   config = function()
     require('lualine').setup {
+    -- winbar = {},
+    -- inactive_winbar = {},
       sections = {
         lualine_c = {
           {
