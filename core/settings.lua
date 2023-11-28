@@ -39,7 +39,7 @@ vim.opt.smartcase = true
 --[[ Sidebar ]]
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 3
 -- Statusline, borders
 vim.wo.signcolumn = "yes" -- additional first column for LSP mark, sign, etc.
 vim.opt.fillchars = {

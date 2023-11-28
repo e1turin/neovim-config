@@ -15,16 +15,37 @@ function vim.getVisualSelection()
   end
 end
 
+local vis = function(func) -- provides default text from selected one in V-Mode
+  return function()
+    local text = vim.getVisualSelection()
+    func({ default_text = text })
+  end
+end
+
 return {
   'nvim-telescope/telescope.nvim',
 
-  tag = '0.1.3',
+  -- tag = '0.1.3',
 
   dependencies = {
     'nvim-lua/plenary.nvim'
   },
 
   config = function()
+    require('telescope').setup({
+      pickers = {
+        buffers = {
+          show_all_buffers = true,
+          sort_mru = true,
+          mappings = {
+            i = {
+              ["<c-d>"] = "delete_buffer",
+            },
+          },
+        },
+      },
+    })
+
     local builtin = require('telescope.builtin')
 
     local map = vim.keymap.set
@@ -32,27 +53,19 @@ return {
 
     -- [[ <space> Search <something> ]]
     map('n', '<leader>ss', builtin.builtin, opts) -- search available searches
-    map('n', '<leader>sf', builtin.find_files, opts)
+    map('n', '<leader>sf',    builtin.find_files, opts)
+    map('n', '<leader><CR>',  builtin.find_files, opts) -- fast open file
+    map('n', '<leader>sb',        builtin.buffers, opts)
+    map('n', '<leader><leader>',  builtin.buffers, opts) -- fast jump between buffers
     map('n', '<leader>sg', builtin.live_grep, opts)
-    map('n', '<leader>sb', builtin.buffers, opts)
-    map('n', '<leader>sh', builtin.help_tags, opts)
-    map('n', '<leader>ff', builtin.current_buffer_fuzzy_find, opts)
+    map('n', '<leader>ff',  builtin.current_buffer_fuzzy_find, opts)
+    map('n', '<leader>/',   builtin.current_buffer_fuzzy_find, opts)
     map('n', '<leader>sd', builtin.diagnostics, opts)
 
-    map('v', '<leader>ff', function() -- fuzzy find selected text
-      local text = vim.getVisualSelection()
-      builtin.current_buffer_fuzzy_find({ default_text = text })
-    end, opts)
-
-    map('v', '<leader>sg', function() -- grep selected text
-      local text = vim.getVisualSelection()
-      builtin.live_grep({ default_text = text })
-    end, opts)
-
-    map('v', '<leader>sr', function() -- search references of selected text
-      local text = vim.getVisualSelection()
-      builtin.lsp_references({ default_text = text })
-    end, opts)
+    map('v', '<leader>ff', vis(builtin.current_buffer_fuzzy_find), opts)
+    map('v', '<leader>/', vis(builtin.current_buffer_fuzzy_find), opts)
+    map('v', '<leader>sg', vis(builtin.live_grep), opts)
+    map('v', '<leader>sr', vis(builtin.lsp_references), opts)
   end
 }
 

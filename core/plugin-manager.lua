@@ -38,9 +38,9 @@ require('lazy').setup {
   -- Directory tree
   require('plugins.nvim-tree'),
   -- Statusline
-  -- require('plugins.lualine'),
+  require('plugins.lualine'),
   -- Tabs for vim's buffers
-  require('plugins.bufferline'),
+  -- require('plugins.bufferline'), -- use telescope/buffers
   -- Git Integration
   require('plugins.gitsigns'),
 
