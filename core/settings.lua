@@ -28,6 +28,8 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
+vim.opt.fileformat = 'dos'
+vim.wo.cursorline = true
 
 --vim.g.vim_markdown_fenced_languages = {'c', 'python'}
 

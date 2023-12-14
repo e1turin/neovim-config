@@ -43,6 +43,7 @@ require('lazy').setup {
   -- require('plugins.bufferline'), -- use telescope/buffers
   -- Git Integration
   require('plugins.gitsigns'),
+  require('plugins.git-conflict'),
 
   --[[ Plugins that eliminate routine ]]
   -- Comments
@@ -52,7 +53,7 @@ require('lazy').setup {
   -- Manage surrounding symbols
   require('plugins.nvim-surround'),
   -- Auto save
-  require('plugins.auto-save'),
+  -- require('plugins.auto-save'),
 
   --[[ UI improvements ]]
   -- Indentation Highlighting

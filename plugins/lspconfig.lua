@@ -6,6 +6,10 @@ local plugin = { -- returns at the end of file
   config = function()
     local lspconfig = require('lspconfig')
 
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
+
     -- Activate specific Language Servers
     lspconfig.clangd.setup {}
     lspconfig.cmake.setup {}
