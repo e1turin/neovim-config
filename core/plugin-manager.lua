@@ -71,5 +71,6 @@ require('lazy').setup {
   -- {'p00f/alabaster.nvim'},
   -- {'Biscuit-Colorscheme/nvim'},
   {'Verf/deepwhite.nvim', lazy=false, priority=1000},
+  { 'xiyaowong/transparent.nvim' } -- just for transparent black colorschemes
 }
 
