@@ -36,9 +36,10 @@ require('lazy').setup {
   -- Powerful search through Neovim
   require('plugins.telescope'),
   -- Directory tree
-  require('plugins.nvim-tree'),
+  -- require('plugins.nvim-tree'), -- use telescope/file_browser extention
   -- Statusline
   require('plugins.lualine'),
+  -- require('plugins.heirline'), -- needs customization
   -- Tabs for vim's buffers
   -- require('plugins.bufferline'), -- use telescope/buffers
   -- Git Integration
@@ -63,14 +64,13 @@ require('lazy').setup {
 
   -- [[ Treesitter ]]
   require('plugins.nvim-treesitter'),
-
   --[[ Color schemes ]]
-  {'bluz71/vim-moonfly-colors'},
-  {'zekzekus/menguless'},
+  { 'bluz71/vim-moonfly-colors' },
+  { 'zekzekus/menguless' },
   -- {'davidosomething/vim-colors-meh'},
-  -- {'p00f/alabaster.nvim'},
+  { 'p00f/alabaster.nvim' },
   -- {'Biscuit-Colorscheme/nvim'},
-  {'Verf/deepwhite.nvim', lazy=false, priority=1000},
+  { 'Verf/deepwhite.nvim', lazy = false, priority = 1000 },
   { 'xiyaowong/transparent.nvim' } -- just for transparent black colorschemes
 }
 

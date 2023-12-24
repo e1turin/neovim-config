@@ -58,6 +58,7 @@ return {
   lazy = false,
   dependencies = {
     'nvim-tree/nvim-web-devicons',
+    'Verf/deepwhite.nvim'
   },
   config = function()
     require('lualine').setup {
