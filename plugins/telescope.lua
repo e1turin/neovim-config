@@ -173,16 +173,19 @@ return {
     local opts = { noremap = true, silent = true } -- idk what
 
     -- [[ <space> Search <something> ]]
-    map('n', '<leader>ss', builtin.builtin, opts) -- search available searches
-    map('n', '<leader>sf',    builtin.find_files, opts)
-    map('n', '<leader><CR>',  builtin.find_files, opts) -- fast open file
-    map('n', '<leader>sb',        builtin.buffers, opts)
-    map('n', '<leader><leader>',  builtin.buffers, opts) -- fast jump between buffers
-    map('n', '<leader>sg', builtin.live_grep, opts)
-    map('n', '<leader>ff',  builtin.current_buffer_fuzzy_find, opts)
+    map('n', '<leader>s', builtin.builtin, opts)        -- available searches
+    map('n', '<leader>f', builtin.find_files, opts)
+    map('n', '<leader><CR>', builtin.find_files, opts)  -- fast open file
+    map('n', '<leader>b', builtin.buffers, opts)
+    map('n', '<leader><leader>', builtin.buffers, opts)  -- fast jump between buffers
+    map('n', '<leader>g', builtin.live_grep, opts)
+    map('n', '<leader>n', builtin.lsp_document_symbols, opts)
+    map('n', '<leader>N', builtin.lsp_dynamic_workspace_symbols, opts)
+    -- map('n', '<leader>f',  builtin.current_buffer_fuzzy_find, opts)
     map('n', '<leader>/',   builtin.current_buffer_fuzzy_find, opts)
-    map('n', '<leader>sd', builtin.diagnostics, opts)
-    map("n", "<space>d", ":Telescope file_browser<CR>") -- path=%:p:h select_buffer=true -- param for opening in current dir
+    -- map('n', '<leader>sd', builtin.diagnostics, opts)
+    map("n", "<leader>d", ":Telescope file_browser<CR>") -- path=%:p:h select_buffer=true -- param for opening in current dir
+    map("n", "<leader>t", ":Telescope ") -- shortcut to call any Telescope picker
 
     map('v', '<leader>ff', vis(builtin.current_buffer_fuzzy_find), opts)
     map('v', '<leader>/', vis(builtin.current_buffer_fuzzy_find), opts)

@@ -30,6 +30,7 @@ require('lazy').setup {
   require('plugins.neodev'),
   -- Package manager for LSP, DAP, Linters, etc.
   require('plugins.mason'),
+  require('plugins.rust-tools'),
 
 
   --[[ Layout, TUI tools ]]
@@ -54,7 +55,7 @@ require('lazy').setup {
   -- Manage surrounding symbols
   require('plugins.nvim-surround'),
   -- Auto save
-  -- require('plugins.auto-save'),
+  require('plugins.auto-save'),
 
   --[[ UI improvements ]]
   -- Indentation Highlighting

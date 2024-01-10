@@ -31,7 +31,7 @@ map('n', ']B', ':blast<CR>', { desc = 'Last buffer' })
 -- [[ OS Interaction ]]
 map('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
 map('i', '<C-v>', '<C-o>"+p', { desc = 'Paste from system clipboard' })
-map('v', '<C-a>', '<Esc>ggVG', { desc = 'Select all content (enter Visual mode before)' })
+map('i', '<C-a>', '<Esc>ggVG', { desc = 'Select all content (enter Visual mode before)' })
 map('t', '<Esc>', '<C-\\><C-N>', { desc = 'Exit to Normal Mode from Terminal emulator mode' })
 -- Show directory tree
 map('n', '<leader>d', function ()
