@@ -17,6 +17,7 @@ local plugin = { -- returns at the end of file
     lspconfig.ruff_lsp.setup {}
     lspconfig.sqlls.setup {}
     lspconfig.marksman.setup {}
+    lspconfig.volar.setup {}
     lspconfig.lua_ls.setup {
       settings = {
         Lua = {
