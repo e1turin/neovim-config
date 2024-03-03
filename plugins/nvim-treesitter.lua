@@ -15,7 +15,7 @@ return {
 
       --[[ Automatically install missing parsers when entering buffer
            Recommendation: set to false if you don't have `tree-sitter` CLI installed locally ]]
-      auto_install = true,
+      auto_install = false,
 
       -- List of parsers to ignore installing (or "all")
       ignore_install = { "javascript" },
@@ -34,7 +34,7 @@ return {
         -- disable = { "c", "rust" },
         disable = function(lang, buf)
           -- Treesitter markdown parser badly highlight links and other but codeblocks
-          -- if lang == 'markdown' then return true end 
+          if lang == 'markdown' then return true end
 
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))

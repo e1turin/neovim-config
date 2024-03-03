@@ -32,7 +32,7 @@ map('n', ']B', ':blast<CR>', { desc = 'Last buffer' })
 map('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
 map('i', '<C-v>', '<C-o>"+p', { desc = 'Paste from system clipboard' })
 map('i', '<C-a>', '<Esc>ggVG', { desc = 'Select all content (enter Insert mode before)' })
-map('v', '<C-a>', 'ggoG', { desc = 'Select all content (enter Visual mode before)' })
+-- map('v', '<C-a>', 'ggoG', { desc = 'Select all content (enter Visual mode before)' A}) -- troubles with 'increment numbers in selection'
 map('t', '<Esc>', '<C-\\><C-N>', { desc = 'Exit to Normal Mode from Terminal emulator mode' })
 map('v', '<C-A-l>', 'gq', { desc = 'Use default format command with IntelliJ shortcut' })
 -- Show directory tree
