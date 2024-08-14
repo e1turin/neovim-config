@@ -12,6 +12,9 @@ set incsearch
 " Don't use Ex mode, use Q for formatting.
 "map Q gq
 set surround
+set ideajoin
+set relativenumber
+
 vnoremap < <gv
 vnoremap > >gv
 nnoremap ]t vat<Esc>

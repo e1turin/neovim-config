@@ -22,8 +22,9 @@ return {
       'lua_ls',
       'clangd',
       'marksman',
-      'pyright',
-      'sqlls'
+      -- 'pyright',
+      'sqlls',
+      'ruff_lsp'
     }
     for _, lsp in ipairs(YOUR_LSP) do
       require('lspconfig')[lsp].setup { capabilities = capabilities }

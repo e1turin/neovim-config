@@ -12,7 +12,7 @@ local plugin = { -- returns at the end of file
 
     -- Activate specific Language Servers
     lspconfig.clangd.setup {}
-    lspconfig.cmake.setup {}
+    -- lspconfig.cmake.setup {}
     -- lspconfig.pyright.setup {}
     lspconfig.ruff_lsp.setup {}
     lspconfig.sqlls.setup {}

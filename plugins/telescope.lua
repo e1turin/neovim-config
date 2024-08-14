@@ -109,7 +109,7 @@ return {
           depth = 1,
           auto_depth = false,
           select_buffer = false,
-          hidden = { file_browser = false, folder_browser = false },
+          hidden = { file_browser = true, folder_browser = false },
           respect_gitignore = vim.fn.executable "fd" == 1,
           no_ignore = false,
           follow_symlinks = false,
