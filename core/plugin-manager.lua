@@ -28,9 +28,12 @@ require('lazy').setup {
   require('plugins.lspconfig'),
   -- Neovim configuring helper
   require('plugins.neodev'),
+  require('plugins.idris2-lsp'),
+  require('plugins.rust-tools'),
+
   -- Package manager for LSP, DAP, Linters, etc.
   require('plugins.mason'),
-  require('plugins.rust-tools'),
+
 
 
   --[[ Layout, TUI tools ]]
