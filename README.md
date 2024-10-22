@@ -38,6 +38,6 @@ Config for using with IdeaVim plugin for IntelliJ.
 
 ## Screenshots
 
-![](./res/screenshots/1.png)
+![README.md](./res/screenshots/1.png)
 
-![](./res/screenshots/2.png)
+![Telescope File Browser](./res/screenshots/2.png)
