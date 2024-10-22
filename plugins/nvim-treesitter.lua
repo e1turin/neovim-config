@@ -6,13 +6,14 @@ return {
   config = function()
     require 'nvim-treesitter.configs'.setup {
       modules = {},
-      ensure_installed = { "c", "cpp", "python", "markdown", "lua", "vim", "vimdoc" },
+      -- ensure_installed = { "c", "cpp", "python", "markdown", "lua", "vim", "vimdoc" },
+      ensure_installed = {}, -- avoid errors on first start
 
       sync_install = false,
 
       auto_install = false,
 
-      ignore_install = { "javascript" },
+      ignore_install = { "javascript" }, -- example
 
       highlight = {
         enable = true,
