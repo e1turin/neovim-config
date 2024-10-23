@@ -9,10 +9,7 @@ return {
   },
 
   config = function()
-    local map = vim.keymap.set
-
-    map('n', '<leader><leader>e', vim.diagnostic.open_float)    -- shortcut for displaying error messages in a separate window.
-    map('n', '<leader><leader>el', vim.diagnostic.setloclist)
+    -- vim.g.maplocalleader=' ' -- by default equal to <Leader>
 
     -- command to run after every code action.
     local function save_hook(action)
@@ -38,33 +35,32 @@ return {
 
       server = {
         on_attach = function()
-          map('n', 'gd', vim.lsp.buf.definition)
-          map('n', 'K', vim.lsp.buf.hover)
+          local map = vim.keymap.set
 
           local ca = require('idris2.code_action')
-          map('n', '<leader>c', ca.case_split)
-          map('n', '<leader>mc', ca.make_case)
-          map('n', '<leader>mw', ca.make_with)
-          map('n', '<leader>ml', ca.make_lemma)
-          map('n', '<leader>a', ca.add_clause)
-          map('n', '<leader>o', ca.expr_search)
-          map('n', '<leader>gd', ca.generate_def)
-          map('n', '<leader>rh', ca.refine_hole)
+          map('n', '<LocalLeader>c', ca.case_split)
+          map('n', '<LocalLeader>mc', ca.make_case)
+          map('n', '<LocalLeader>mw', ca.make_with)
+          map('n', '<LocalLeader>ml', ca.make_lemma)
+          map('n', '<LocalLeader>a', ca.add_clause)
+          map('n', '<LocalLeader>o', ca.expr_search)
+          map('n', '<LocalLeader>gd', ca.generate_def)
+          map('n', '<LocalLeader>rh', ca.refine_hole)
 
           local hover = require('idris2.hover')
-          map('n', '<leader>so', hover.open_split)
-          map('n', '<leader>sc', hover.close_split)
+          map('n', '<LocalLeader>so', hover.open_split)
+          map('n', '<LocalLeader>sc', hover.close_split)
 
-          local mv = require('idris2.metavars')
-          map('n', '<leader>mm', mv.request_all)
-          map('n', '<leader>mn', mv.goto_next)
-          map('n', '<leader>mp', mv.goto_prev)
+          local metavars = require('idris2.metavars')
+          map('n', '<LocalLeader>mm', metavars.request_all)
+          map('n', '<LocalLeader>mn', metavars.goto_next)
+          map('n', '<LocalLeader>mp', metavars.goto_prev)
 
           local browse = require('idris2.browse')
-          map('n', '<leader>br', browse.browse)
+          map('n', '<LocalLeader>br', browse.browse)
 
           local repl = require('idris2.repl')
-          map('n', '<leader>x', repl.evaluate)
+          map('n', '<LocalLeader>e', repl.evaluate)
         end,
 
         init_options = {
