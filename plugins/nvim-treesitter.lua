@@ -4,7 +4,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
 
   config = function()
-    require 'nvim-treesitter.configs'.setup {
+    require('nvim-treesitter.configs').setup {
       modules = {},
       -- ensure_installed = { "c", "cpp", "python", "markdown", "lua", "vim", "vimdoc" },
       ensure_installed = {}, -- avoid errors on first start

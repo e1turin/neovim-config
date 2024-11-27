@@ -3,6 +3,14 @@
 local plugin = { -- returns at the end of file
   'neovim/nvim-lspconfig',
 
+  YOUR_LSP_LIST = { -- Add another your lsp, used for plugins/cmp.lua
+    'lua_ls',
+    'clangd',
+    'marksman',
+    'sqlls',
+    'ruff'
+  },
+
   config = function()
     local lspconfig = require('lspconfig')
 
@@ -11,10 +19,9 @@ local plugin = { -- returns at the end of file
     })
 
     -- Activate specific Language Servers
+    -- Check before YOUR_LSP_LIST field value
     lspconfig.clangd.setup {}
-    -- lspconfig.cmake.setup {}
-    -- lspconfig.pyright.setup {}
-    lspconfig.ruff_lsp.setup {}
+    lspconfig.ruff.setup {}
     lspconfig.sqlls.setup {}
     lspconfig.marksman.setup {}
     lspconfig.volar.setup {}

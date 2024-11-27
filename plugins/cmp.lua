@@ -18,16 +18,10 @@ return {
 
     -- Set up lspconfig.
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local YOUR_LSP = { -- Add another your lsp
-      'lua_ls',
-      'clangd',
-      'marksman',
-      -- 'pyright',
-      'sqlls',
-      'ruff_lsp'
-    }
-    for _, lsp in ipairs(YOUR_LSP) do
-      require('lspconfig')[lsp].setup { capabilities = capabilities }
+    local lspconfig = require('lspconfig')
+
+    for _, lsp in ipairs(require('plugins.lspconfig').YOUR_LSP_LIST) do
+      lspconfig[lsp].setup { capabilities = capabilities }
     end
 
     cmp.setup({

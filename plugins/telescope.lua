@@ -34,7 +34,8 @@ return {
   },
 
   config = function()
-    local fb_actions = require "telescope._extensions.file_browser.actions"
+    local fb = require("telescope").extensions.file_browser
+    local fb_actions = fb.actions
 
     require('telescope').setup {
       defaults = {
@@ -168,13 +169,24 @@ return {
     require('telescope').load_extension('file_browser')
 
     local builtin = require('telescope.builtin')
+    local utils = require('telescope.utils')
 
     local map = vim.keymap.set
     local opts = { noremap = true, silent = true } -- idk what
 
+    local find_in_current_dir = function()
+      builtin.find_files({ cwd = utils.buffer_dir() })
+    end
+    local file_browser_in_current_dir = function()
+      fb.file_browser({
+        path = utils.buffer_dir(),
+        select_buffer = true
+      })
+    end
+
     -- [[ <space> Search <something> ]]
     map('n', '<leader>s', builtin.builtin, opts)        -- available searches
-    map('n', '<leader>f', builtin.find_files, opts)
+    map('n', '<leader>f', find_in_current_dir, opts)
     map('n', '<leader><CR>', builtin.find_files, opts)  -- fast open file
     map('n', '<leader>b', builtin.buffers, opts)
     map('n', '<leader><leader>', builtin.buffers, opts)  -- fast jump between buffers
@@ -184,8 +196,9 @@ return {
     -- map('n', '<leader>f',  builtin.current_buffer_fuzzy_find, opts)
     map('n', '<leader>/',   builtin.current_buffer_fuzzy_find, opts)
     -- map('n', '<leader>sd', builtin.diagnostics, opts)
-    map("n", "<leader>d", ":Telescope file_browser<CR>") -- path=%:p:h select_buffer=true -- param for opening in current dir
-    map("n", "<leader>t", ":Telescope ") -- shortcut to call any Telescope picker
+    map("n", "<leader>d", file_browser_in_current_dir) -- opening in current dir
+    map("n", "<leader>D", fb.file_browser) -- opening in start up dir
+    map("n", "<leader>t", ":Telescope ") -- shortcut to call any Telescope picker from command line
 
     map('v', '<leader>ff', vis(builtin.current_buffer_fuzzy_find), opts)
     map('v', '<leader>/', vis(builtin.current_buffer_fuzzy_find), opts)

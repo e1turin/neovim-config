@@ -68,6 +68,7 @@ require('lazy').setup {
 
   -- [[ Treesitter ]]
   require('plugins.nvim-treesitter'),
+
   --[[ Color schemes ]]
   { 'bluz71/vim-moonfly-colors' },
   { 'zekzekus/menguless' },
