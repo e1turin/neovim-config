@@ -8,20 +8,41 @@ local plugin = { -- returns at the end of file
     'clangd',
     'marksman',
     'sqlls',
-    'ruff'
+    'ruff',
+    'pyright'
   },
 
   config = function()
     local lspconfig = require('lspconfig')
 
-    vim.diagnostic.config({
+    vim.diagnostic.config {
       virtual_text = true,
-    })
+    }
 
     -- Activate specific Language Servers
     -- Check before YOUR_LSP_LIST field value
     lspconfig.clangd.setup {}
-    lspconfig.ruff.setup {}
+    lspconfig.ruff.setup {
+      init_options = {
+        settings = {
+          -- Ruff language server settings go here
+        }
+      }
+    }
+    lspconfig.pyright.setup { -- from ruff documentation
+      settings = {
+        pyright = {
+          -- Using Ruff's import organizer
+          disableOrganizeImports = true,
+        },
+        python = {
+          analysis = {
+            -- Ignore all files for analysis to exclusively use Ruff for linting
+            ignore = { '*' },
+          },
+        },
+      },
+    }
     lspconfig.sqlls.setup {}
     lspconfig.marksman.setup {}
     lspconfig.volar.setup {}

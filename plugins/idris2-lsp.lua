@@ -5,7 +5,7 @@ return {
 
   dependencies = {
     -- 'neovim/nvim-lspconfig',
-    'MunifTanjim/nui.nvim'
+    -- 'MunifTanjim/nui.nvim' -- required! but buggy
   },
 
   config = function()
@@ -67,6 +67,13 @@ return {
           logFile = "~/.cache/idris2-lsp/server.log",
           longActionTimeout = 2000, -- 2 second
         },
+
+        -- before_init = function (params)
+        --    params.processId = vim.NIL
+        -- end,
+        -- cmd = {
+        --   'docker', 'run', '-i', '--rm', '-v', 'D:/Projects/itmo-fp/lab-1/task-13:/mnt/projects/itmo-fp/lab-1/task-13', 'idris2-pack-lsp', 'idris2-lsp'
+        -- }
       },
     }
   end

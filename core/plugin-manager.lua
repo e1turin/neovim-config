@@ -26,15 +26,14 @@ require('lazy').setup {
   --[[ Additional devtools ]]
   -- Standart LSP setup helper
   require('plugins.lspconfig'),
-  -- Neovim configuring helper
-  require('plugins.neodev'),
-  require('plugins.idris2-lsp'),
-  require('plugins.rust-tools'),
 
   -- Package manager for LSP, DAP, Linters, etc.
   require('plugins.mason'),
 
-
+  -- Neovim configuring helper
+  require('plugins.neodev'),
+  require('plugins.rust-tools'),
+  -- require('plugins.idris2-lsp'),
 
   --[[ Layout, TUI tools ]]
   -- Powerful search through Neovim
@@ -49,6 +48,8 @@ require('lazy').setup {
   -- Git Integration
   require('plugins.gitsigns'),
   require('plugins.git-conflict'),
+
+  -- { 'MunifTanjim/nui.nvim' }, -- buggy UI components used for Idris2 LSP plugin
 
   --[[ Plugins that eliminate routine ]]
   -- Comments
