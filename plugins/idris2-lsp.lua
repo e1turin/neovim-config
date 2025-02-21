@@ -5,7 +5,7 @@ return {
 
   dependencies = {
     -- 'neovim/nvim-lspconfig',
-    -- 'MunifTanjim/nui.nvim' -- required! but buggy
+    'MunifTanjim/nui.nvim' -- required! but buggy
   },
 
   config = function()
