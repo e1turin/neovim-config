@@ -31,6 +31,11 @@ vim.opt.smartindent = true
 vim.opt.fileformat = 'dos'
 vim.wo.cursorline = true
 
+vim.opt.list = true
+vim.opt.listchars = {
+  space = '⋅',
+}
+
 --vim.g.vim_markdown_fenced_languages = {'c', 'python'}
 
 --[[ Search ]]
