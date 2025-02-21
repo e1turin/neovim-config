@@ -34,10 +34,11 @@ return {
   },
 
   config = function()
-    local fb = require("telescope").extensions.file_browser
+    local T = require("telescope")
+    local fb = T.extensions.file_browser
     local fb_actions = fb.actions
 
-    require('telescope').setup {
+    T.setup {
       defaults = {
         layout_strategy = "flex", -- "horizontal"/"vertival"/"flex"/"cursor"
         layout_config = {
@@ -80,21 +81,8 @@ return {
       },
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown {
-            -- even more opts
-          }
-          -- pseudo code / specification for writing custom displays, like the one
-          -- for "codeactions"
-          -- specific_opts = {
-          --   [kind] = {
-          --     make_indexed = function(items) -> indexed_items, width,
-          --     make_displayer = function(widths) -> displayer
-          --     make_display = function(displayer) -> function(e)
-          --     make_ordinal = function(e) -> string
-          --   },
-          --   -- for example to disable the custom builtin "codeactions" display
-          --      do the following
-          --   codeactions = false,
+          -- require("telescope.themes").get_dropdown {
+          --   -- even more opts
           -- }
         },
         ["file_browser"] = {
@@ -165,46 +153,49 @@ return {
         },
       }
     }
-    require('telescope').load_extension('ui-select')
-    require('telescope').load_extension('file_browser')
+    T.load_extension('ui-select')
+    T.load_extension('file_browser')
 
-    local builtin = require('telescope.builtin')
-    local utils = require('telescope.utils')
+    local TB = require('telescope.builtin')
+    local TU = require('telescope.utils')
 
     local map = vim.keymap.set
     local opts = { noremap = true, silent = true } -- idk what
 
     local find_in_current_dir = function()
-      builtin.find_files({ cwd = utils.buffer_dir() })
+      TB.find_files({ cwd = TU.buffer_dir() })
     end
     local file_browser_in_current_dir = function()
       fb.file_browser({
-        path = utils.buffer_dir(),
+        path = TU.buffer_dir(),
         select_buffer = true
       })
     end
 
-    -- [[ <space> Search <something> ]]
-    map('n', '<leader>s', builtin.builtin, opts)        -- available searches
+    -- omni
+    map('n', '<leader><leader>', TB.resume, opts) -- fast jump between buffers
+    map('n', '<leader>s', TB.builtin, opts)       -- available searches
+    map("n", "<leader>t", ":Telescope ")               -- shortcut to call any Telescope picker from command line
+
+    -- buffers
+    map('n', '<leader>b', TB.buffers, opts)
+
+    -- files
     map('n', '<leader>f', find_in_current_dir, opts)
-    map('n', '<leader><CR>', builtin.find_files, opts)  -- fast open file
-    map('n', '<leader>b', builtin.buffers, opts)
-    map('n', '<leader><leader>', builtin.buffers, opts)  -- fast jump between buffers
-    map('n', '<leader>g', builtin.live_grep, opts)
-    map('n', '<leader>n', builtin.lsp_document_symbols, opts)
-    map('n', '<leader>N', builtin.lsp_dynamic_workspace_symbols, opts)
-    -- map('n', '<leader>f',  builtin.current_buffer_fuzzy_find, opts)
-    map('n', '<leader>/',   builtin.current_buffer_fuzzy_find, opts)
-    -- map('n', '<leader>sd', builtin.diagnostics, opts)
-    map("n", "<leader>d", file_browser_in_current_dir) -- opening in current dir
-    map("n", "<leader>D", fb.file_browser) -- opening in start up dir
-    map("n", "<leader>t", ":Telescope ") -- shortcut to call any Telescope picker from command line
+    map('n', '<leader><CR>', TB.find_files, opts) -- fast open file
+    map('n', '<leader>d', file_browser_in_current_dir) -- opening in current dir
+    map('n', '<leader>D', fb.file_browser)             -- opening in start up dir
 
-    map('v', '<leader>ff', vis(builtin.current_buffer_fuzzy_find), opts)
-    map('v', '<leader>/', vis(builtin.current_buffer_fuzzy_find), opts)
-    map('v', '<leader>sg', vis(builtin.live_grep), opts)
-    map('v', '<leader>sr', vis(builtin.lsp_references), opts)
+    -- greping
+    map('n', '<leader>g', TB.live_grep, opts)
+    map('v', '<leader>g', vis(TB.live_grep), opts)
+    map('n', '<leader>/', TB.current_buffer_fuzzy_find, opts)
+    map('v', '<leader>/', vis(TB.current_buffer_fuzzy_find), opts)
 
+    -- LSP
+    map('n', '<leader>n', TB.lsp_document_symbols, opts)
+    map('v', '<leader>n', vis(TB.lsp_references), opts)
+    map('n', '<leader>N', TB.lsp_dynamic_workspace_symbols, opts)
+    map('n', '<leader>i', TB.diagnostics, opts) -- *show issues*
   end
 }
-

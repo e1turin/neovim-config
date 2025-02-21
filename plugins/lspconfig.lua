@@ -66,7 +66,7 @@ local map = vim.keymap.set
 map('n', 'gh', vim.diagnostic.open_float)
 map('n', '[d', vim.diagnostic.goto_prev)
 map('n', ']d', vim.diagnostic.goto_next)
-map('n', '<leader>q', vim.diagnostic.setloclist)
+-- map('n', '<leader>q', vim.diagnostic.setloclist) -- what?
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -91,11 +91,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
     map('n', 'gtd', vim.lsp.buf.type_definition, opts)
     map('n', '<leader>rr', vim.lsp.buf.rename, opts) -- fefactor rename
-    map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    map({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, opts)
     map('n', 'gr', vim.lsp.buf.references, opts)
-    map('v', '<leader>f', function() -- I use Vgq
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    -- map('v', '<leader>f', function() -- I use Vgq
+    --   vim.lsp.buf.format { async = true }
+    -- end, opts)
   end,
 })
 
