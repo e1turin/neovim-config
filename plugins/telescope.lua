@@ -179,12 +179,13 @@ return {
 
     -- buffers
     map('n', '<leader>b', TB.buffers, opts)
+    map('n', '<leader><CR>', TB.buffers, opts)
 
     -- files
-    map('n', '<leader>f', find_in_current_dir, opts)
-    map('n', '<leader><CR>', TB.find_files, opts) -- fast open file
-    map('n', '<leader>d', file_browser_in_current_dir) -- opening in current dir
-    map('n', '<leader>D', fb.file_browser)             -- opening in start up dir
+    map('n', '<leader>\\', TB.find_files, opts) -- fast open file
+    map('n', '<leader>d', find_in_current_dir, opts)
+    map('n', '<leader>f', fb.file_browser)             -- opening in start up dir
+    map('n', '<leader>F', file_browser_in_current_dir) -- opening in current dir
 
     -- greping
     map('n', '<leader>g', TB.live_grep, opts)
