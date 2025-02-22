@@ -184,8 +184,8 @@ return {
     -- files
     map('n', '<leader>\\', TB.find_files, opts) -- fast open file
     map('n', '<leader>d', find_in_current_dir, opts)
-    map('n', '<leader>f', fb.file_browser)             -- opening in start up dir
-    map('n', '<leader>F', file_browser_in_current_dir) -- opening in current dir
+    map('n', '<leader>f', file_browser_in_current_dir) -- opening in current dir
+    map('n', '<leader>F', fb.file_browser)             -- opening in start up dir
 
     -- greping
     map('n', '<leader>g', TB.live_grep, opts)
