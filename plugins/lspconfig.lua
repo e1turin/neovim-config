@@ -66,7 +66,6 @@ local map = vim.keymap.set
 map('n', 'gh', vim.diagnostic.open_float)
 map('n', '[d', vim.diagnostic.goto_prev)
 map('n', ']d', vim.diagnostic.goto_next)
--- map('n', '<leader>q', vim.diagnostic.setloclist) -- what?
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -89,16 +88,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
     map({ 'n', 'v' }, '<leader>.', vim.lsp.buf.code_action, opts)
-    map('n', '<leader>r', vim.lsp.buf.rename, opts) -- fefactor rename
-    -- map('v', '<leader>f', function() -- I use Vgq
-    --   vim.lsp.buf.format { async = true }
-    -- end, opts)
-
-    -- map('n', '<leader>cd', vim.lsp.buf.add_workspace_folder, opts) -- idk not use
-    -- map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    -- map('n', '<leader>wl', function()
-      -- print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, opts)
+    map('n', '<leader>r', vim.lsp.buf.rename, opts)
   end,
 })
 

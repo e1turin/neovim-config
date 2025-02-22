@@ -162,34 +162,38 @@ return {
     local map = vim.keymap.set
     local opts = { noremap = true, silent = true } -- idk what
 
-    local find_in_current_dir = function()
+    local find_files_cwd = function()
       TB.find_files({ cwd = TU.buffer_dir() })
     end
-    local file_browser_in_current_dir = function()
+    local file_browser_cwd = function()
       fb.file_browser({
         path = TU.buffer_dir(),
         select_buffer = true
       })
     end
+    local live_grep_cwd = function()
+      TB.live_grep({ cwd = TU.buffer_dir() })
+    end
 
     -- omni
-    map('n', '<leader><leader>', TB.resume, opts) -- fast jump between buffers
+    map('n', '<leader><leader>', TB.resume, opts) -- last used search
     map('n', '<leader>s', TB.builtin, opts)       -- available searches
-    map("n", "<leader>t", ":Telescope ")               -- shortcut to call any Telescope picker from command line
+    map("n", "<leader>t", ":Telescope ")          -- call any Telescope picker from CLI
 
     -- buffers
-    map('n', '<leader>b', TB.buffers, opts)
     map('n', '<leader><CR>', TB.buffers, opts)
 
     -- files
-    map('n', '<leader>\\', TB.find_files, opts) -- fast open file
-    map('n', '<leader>d', find_in_current_dir, opts)
-    map('n', '<leader>f', file_browser_in_current_dir) -- opening in current dir
-    map('n', '<leader>F', fb.file_browser)             -- opening in start up dir
+    map('n', '<leader>\\', TB.find_files, opts)
+    map('n', '<leader>d', find_files_cwd, opts)
+    map('n', '<leader>f', file_browser_cwd)
+    map('n', '<leader>F', fb.file_browser)
 
     -- greping
-    map('n', '<leader>g', TB.live_grep, opts)
-    map('v', '<leader>g', vis(TB.live_grep), opts)
+    map('n', '<leader>g', live_grep_cwd, opts)
+    map('v', '<leader>g', vis(live_grep_cwd), opts)
+    map('v', '<leader>G', vis(TB.live_grep), opts)
+    map('n', '<leader>G', TB.live_grep, opts)
     map('n', '<leader>/', TB.current_buffer_fuzzy_find, opts)
     map('v', '<leader>/', vis(TB.current_buffer_fuzzy_find), opts)
 
@@ -197,6 +201,6 @@ return {
     map('n', '<leader>n', TB.lsp_document_symbols, opts)
     map('v', '<leader>n', vis(TB.lsp_references), opts)
     map('n', '<leader>N', TB.lsp_dynamic_workspace_symbols, opts)
-    map('n', '<leader>i', TB.diagnostics, opts) -- *show issues*
+    map('n', '<leader>q', TB.diagnostics, opts)
   end
 }
