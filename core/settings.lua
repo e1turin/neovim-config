@@ -36,7 +36,10 @@ vim.opt.listchars = {
   space = '⋅',
 }
 
---vim.g.vim_markdown_fenced_languages = {'c', 'python'}
+--[[ Spelling and typo checks ]]
+-- see https://www.vim.org/mirrors.php for actual mirrors
+vim.g.spellfile_URL = 'https://ftp.pl.vim.org/pub/vim/runtime/spell'
+vim.cmd[[set spell spelllang=en_us,ru_ru]]
 
 --[[ Search ]]
 vim.opt.ignorecase = true
