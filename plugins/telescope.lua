@@ -174,6 +174,12 @@ return {
     local live_grep_cwd = function()
       TB.live_grep({ cwd = TU.buffer_dir() })
     end
+    local sort_buffers = function()
+      TB.buffers({
+        sort_mru = true,
+        -- ignore_current_buffer = true
+      })
+    end
 
     -- omni
     map('n', '<leader><leader>', TB.resume, opts) -- last used search
@@ -181,7 +187,7 @@ return {
     map("n", "<leader>t", ":Telescope ")          -- call any Telescope picker from CLI
 
     -- buffers
-    map('n', '<leader><CR>', TB.buffers, opts)
+    map('n', '<leader><CR>', sort_buffers, opts)
 
     -- files
     map('n', '<leader>\\', TB.find_files, opts)
